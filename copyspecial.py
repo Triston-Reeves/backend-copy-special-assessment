@@ -30,7 +30,11 @@ def get_special_paths(dirname):
 
 
 def copy_to(path_list, dest_dir):
-    cmd = shutil.copy(path_list, dest_dir)
+    if not os.path.exists(dest_dir):
+        os.makedirs(dest_dir)
+    for path in path_list:
+        print(dest_dir)
+        cmd = shutil.copy(path,dest_dir)
     print("Command I'm going to do:")
     print(' '.join(cmd))
     for basename in path_list:
